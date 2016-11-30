@@ -1,0 +1,277 @@
+docker tag 7d9495d03763 maryatdocker/docker-whale:latest
+
+docker tag a8012b1abc91 mtswebdev/firstimage:v1
+
+docker login --username=yourhubusername --email=youremail@company.com
+
+docker login --username=mtswebdev --email=ranjithwebdev@gmail.com
+
+docker push maryatdocker/docker-whale
+
+
+
+docker push mtswebdev/firstimage
+
+docker rmi -f a8012b1abc91
+
+
+docker pull mtswebdev/firstimage
+
+
+
+docker commands:
+
+
+docker search
+
+docker serach -s 100 imagename
+
+docker pull imagename:tagname
+
+docker run -it imagename:tagname /bin/bash
+
+cat /etc/redhat-release
+
+docker ps
+
+docker ps -a
+
+docker restart cf18032545e3
+
+docker attach cf18032545e3
+
+docker rm cf18032545e3
+
+docker run:
+
+docker run -it imagename:tagname sh
+
+docker rm $(docker ps -aq)
+
+docker run -it --rm imagename sh will imediately deletes 
+
+docker run -it --rm -v /home/r.txt:/home/r.txt imagename  /bin/bash
+
+docker run -it --rm -v /home/r.txt:/home/r.txt -u 1000:1000 imagename   /bin/bash
+
+docker run -d -p 80 nginx
+
+docker stop imageid
+
+docker rmi imageid
+
+docker run -d -p 8000:80 nginx
+
+docker run -it --rm -e MYSECRET=NOSECRET ubuntu bin/bash
+
+docker run -d -p 80:80 -v $(pwd):/usr/local/nginx/html nginx
+
+sudo ls /var/lib/docker/
+
+
+docker run -v /var/lib/mysql --name=my_datastore -d busybox 
+
+docker inspect my_datastore | less
+
+docker run --name my_mysql -e MYSQL_ROOT_PASSWORD=mysecretpassword --volumes-from my_datastore -d mysql
+
+docker run --link=my_mysql:mysql -p 80:80 -d wordpress
+
+docker build -t ranjith/mts:v1 .
+
+docker build -t ranjith/mts:v2 .
+
+Dark Zebra
+
+
+docker tag debian:latest debian:mts
+docker tag  d125a7609d2d ranjith/mts:v3
+
+
+docker run -i -t centos /bin/bash
+
+docker run -it --rm -v /opt/apache-tomcat-8.0.30-src.tar.gz:/opt/apache-tomcat-8.0.30-src.tar.gz centos  /bin/bash
+
+docker run -i -t centos /bin/bash
+
+
+sudo docker exec -it 54c65b0189d0 /bin/bash
+
+ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'
+
+second tenant:
+
+docker run -v /var/lib/mysql --name=my_datastore2 -d busybox 
+
+docker run --name my_mysql2 -e MYSQL_ROOT_PASSWORD=mysecretpassword --volumes-from my_datastore2 -d mysql
+
+docker run --name wp2 --link=my_mysql2:mysql -p 80:80 -d wordpress
+
+sudo docker exec -it f3e808cb8dac /bin/bash
+
+docker exec -it 9197e82b3c7b /bin/bash
+
+docker pull wordpress
+
+docker cp foo.txt mycontainer:/foo.txt
+docker cp mycontainer:/foo.txt foo.txt
+
+docker cp mt-java-agent f3e808cb8dac:/home/mt-java-agent
+
+docker cp f3e808cb8dac:/home/mt-java-agent mt-java-agent
+
+docker inspect f3e808cb8dac
+
+docker inspect <CONTAINER ID> | grep -w "IPAddress" | awk '{ print $2 }' | head -n 1 | cut -d "," -f1
+
+docker inspect f3e808cb8dac | grep -w "IPAddress" | awk '{ print $2 }' | head -n 1 | cut -d "," -f1
+
+
+docker inspect -f '{{.Name}} - {{.NetworkSettings.IPAddress }}' $(docker ps -aq)
+
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
+
+
+https://the.binbashtheory.com/building-php-application-with-docker/
+
+
+docker save -o <save image to path> <image name>
+
+docker load -i <path to image tar file>
+
+
+docker save -o /home/backuptar/nginx.tar nginx
+
+docker load -i /home/nginx.tar
+
+
+http://repo.mysql.com/yum/
+
+docker commit 424ae940b9a5  jtracapplink
+
+docker commit 9197e82b3c7b  jtracappconf
+
+docker commit c432dec39cdc  jtracdbconf
+
+docker run -p 8087:8080 jtracapp1 /bin/bash
+
+docker run --name=jtracapp1 -p -it 8087:8080 jtracappconf /bin/bash
+
+/usr/sbin/httpd
+
+docker inspect b5b0709f6abe  | grep -w "IPAddress" | awk '{ print $2 }' | head -n 1 | cut -d "," -f1
+
+172.17.0.5
+
+systemctl start httpd.service
+
+ps aux
+
+https://blog.risingstack.com/operating-system-containers-vs-application-containers/
+
+https://docs.docker.com/v1.8/articles/networking/
+
+sudo iptables -t nat -L -n
+
+
+https://jpetazzo.github.io/2013/10/16/configure-docker-bridge-network/
+
+https://github.com/docker/docker/issues/8519
+
+docker rm $(docker ps -a -q)
+
+docker rmi $(docker images -q)
+
+docker run -i -t 8dbd9e392a96 /bin/bash
+
+docker cp /tmp/fromScratch/ f3e808cb8dac:/home/mt-java-agent
+
+sudo docker exec -i -t 665b4a1e17b6 /bin/bash
+
+docker rmi imageid
+
+sync; echo 3 > /proc/sys/vm/drop_caches
+
+
+docker run -d --expose=1000-9000 ranjith12:v2 /bin/bash
+
+https://docs.docker.com/engine/installation/linux/centos/
+
+https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/issues/1368
+
+https://docs.docker.com/engine/reference/commandline/dockerd/
+
+http://www.projectatomic.io/blog/2016/03/daemon_option_basedevicesize/
+
+docker daemon --storage-opt dm.basesize=40G
+
+
+Uername : athena@corenttech.com
+Password: zsQ8d2Nwy
+
+https://jpetazzo.github.io/2014/01/29/docker-device-mapper-resize/
+
+https://github.com/docker/docker/issues/14678
+
+
+docker run -t -i ubuntu /sbin/init
+
+http://developers.redhat.com/blog/2014/05/05/running-systemd-within-docker-container/
+
+https://docs.docker.com/engine/reference/builder/
+
+https://rhatdan.wordpress.com/2014/04/30/running-systemd-within-a-docker-container/
+
+
+
+cat /proc/1/comm
+
+sudo chmod -R o+rwx /usr/local/var/mysql/
+sudo chown -R root:root /sbin/
+sudo mysql.server restart
+
+
+sudo chmod -R o+rwx /var/lib/mysql/
+sudo chown -R mysql /var/lib/mysql/
+
+/etc/init.d/mysql status
+
+/etc/init.d/mysql start
+docker save -o /tmp/dbdir/db.tar databasemachine:v2
+
+
+docker cp /tmp/mysql.tar/  463af6434405:/tmp/mysql.tar/
+
+
+docker commit <Container-name>  <image-name>
+
+docker commit 3e54832b351d  machine:v2
+
+docker save -o <sourcefolder>/<tarname> <image-name>
+
+Eg:docker save -o /tmp/dockertar/service.tar 7service:v2
+
+
+
+sudo yum install java-1.6.0-openjd
+  sudo yum install java-1.6.0-openjdk-devel
+
+
+
+FROM centos:centos7
+MAINTAINER corent (ksundarkumar@corenttech.com)
+ENV container docker
+RUN yum -y update;yum  clean all
+RUN yum  -y install systemd; yum  clean all; \
+(cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+VOLUME ["/sys/fs/cgroup"]
+CMD ["/usr/sbin/init"]
+
+
