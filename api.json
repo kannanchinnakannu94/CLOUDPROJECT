@@ -15,7 +15,7 @@
     
     },
     "tags":[
-      {"name":"SAMPLE_APP","description":"About CRUD Operation  In Users"}
+      {"name":"SAMPLE_APP","description":"About CRUD Operation  In Users","externalDocs":{"description":"Find out more","url":"http://swagger.io"}}
       ],
     "host": "corenttech.com",
     "basePath": "/My_SampleAPP",
