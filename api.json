@@ -1,41 +1,172 @@
 {
     "swagger": "2.0",
     "info": {
+        "description": "Corent API CRUD sample",
         "version": "1.0.0",
-        "title": "Simple API",
-        "description": "A simple API to learn how to write OpenAPI Specification"
+        "title": "Corent API  CRUD Operations",
+        "termsOfService": "http://corenttech.com",
+        "contact": {
+            "email": "grarunkumar@corenttech.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
     },
+    "tags":[{"name":"SAMPLE_APP","description":"About CRUD Operation  In Users"}],
+    "host": "corenttech.com",
+    "basePath": "/My_SampleAPP",
     "schemes": [
-        "https"
+        "http"
     ],
-    "host": "simple.api",
-    "basePath": "/openapi101",
     "paths": {
-        "/persons": {
-            "get": {
-                "summary": "Gets some persons",
-                "description": "Returns a list containing all persons.",
-                "responses": {
-                    "200": {
-                        "description": "A list of Person",
+        "/create": {
+            "post": {
+                "summary": "create Operation",
+                "description": "This is create Operation in CRUD",
+                "operationId": "createUSER",
+                "consumes": [
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "User Object needs to be added",
+                        "required": true,
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "properties": {
-                                    "firstName": {
-                                        "type": "string"
-                                    },
-                                    "lastName": {
-                                        "type": "string"
-                                    },
-                                    "username": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
+                            "$ref": "#/definitions/User"
                         }
                     }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
                 }
+            }
+        },
+        "/user/{username}": {
+            "get": {
+                "summary": "Get user by user name",
+                "description": "This is Read Operation in CRUD",
+                "operationId": "getUserByName",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "The name that needs to be fetched. Use user1 for testing. ",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid username supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Updated user",
+                "description": "This is update Operation in CRUD",
+                "operationId": "updateUser",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "name that need to be updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Updated user object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete user",
+                "description": "This is delete Operation in CRUD",
+                "operationId": "deleteUser",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "The name that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid username supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "User"
             }
         }
     }
