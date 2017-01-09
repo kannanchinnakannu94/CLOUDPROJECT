@@ -25,6 +25,7 @@
     "paths": {
         "/create": {
             "post": {
+                "tags":["SAMPLE_APP"],
                 "summary": "create Operation",
                 "description": "This is create Operation in CRUD",
                 "operationId": "createUSER",
@@ -57,6 +58,7 @@
         },
         "/user/{username}": {
             "get": {
+                  "tags":["SAMPLE_APP"],
                 "summary": "Get user by user name",
                 "description": "This is Read Operation in CRUD",
                 "operationId": "getUserByName",
@@ -86,6 +88,7 @@
                 }
             },
             "put": {
+                  "tags":["SAMPLE_APP"],
                 "summary": "Updated user",
                 "description": "This is update Operation in CRUD",
                 "operationId": "updateUser",
@@ -124,6 +127,7 @@
                 }
             },
             "delete": {
+                  "tags":["SAMPLE_APP"],
                 "summary": "Delete user",
                 "description": "This is delete Operation in CRUD",
                 "operationId": "deleteUser",
