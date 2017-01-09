@@ -12,8 +12,11 @@
             "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
+    
     },
-    "tags":[{"name":"SAMPLE_APP","description":"About CRUD Operation  In Users"}],
+    "tags":[
+      {"name":"SAMPLE_APP","description":"About CRUD Operation  In Users"}
+      ],
     "host": "corenttech.com",
     "basePath": "/My_SampleAPP",
     "schemes": [
